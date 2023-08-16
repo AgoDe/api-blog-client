@@ -1,185 +1,184 @@
 <script setup>
-import { reactive, computed } from "vue";
+import { reactive, computed } from 'vue'
 
 // Component properties
 const props = defineProps({
   tag: {
     type: String,
-    default: "div",
-    description: "The HTML tag of the component (div, a)",
+    default: 'div',
+    description: 'The HTML tag of the component (div, a)'
   },
   title: {
     type: String,
-    description: "The title of the block",
+    description: 'The title of the block'
   },
   subtitle: {
     type: String,
-    description: "The subtitle of the block",
+    description: 'The subtitle of the block'
   },
   bordered: {
     type: Boolean,
     default: false,
-    description: "Bordered block style",
+    description: 'Bordered block style'
   },
   rounded: {
     type: Boolean,
     default: true,
-    description: "Rounded block style",
+    description: 'Rounded block style'
   },
   themed: {
     type: Boolean,
     default: false,
-    description: "Themed block style",
+    description: 'Themed block style'
   },
   transparent: {
     type: Boolean,
     default: false,
-    description: "Transparent block style",
+    description: 'Transparent block style'
   },
   fxShadow: {
     type: Boolean,
     default: false,
-    description: "Shadow fx block style",
+    description: 'Shadow fx block style'
   },
   fxPop: {
     type: Boolean,
     default: false,
-    description: "Pop fx block style",
+    description: 'Pop fx block style'
   },
   fxRotateRight: {
     type: Boolean,
     default: false,
-    description: "Rotate right fx block style",
+    description: 'Rotate right fx block style'
   },
   fxRotateLeft: {
     type: Boolean,
     default: false,
-    description: "Rotate left fx block style",
+    description: 'Rotate left fx block style'
   },
   linkShadow: {
     type: Boolean,
     default: false,
-    description: "Shadow style for block links",
+    description: 'Shadow style for block links'
   },
   linkPop: {
     type: Boolean,
     default: false,
-    description: "Pop style for block links",
+    description: 'Pop style for block links'
   },
   linkRotate: {
     type: Boolean,
     default: false,
-    description: "Rotate style for block links",
+    description: 'Rotate style for block links'
   },
   headerClass: {
     type: String,
-    description: "Add additional classes to default block-header",
+    description: 'Add additional classes to default block-header'
   },
   optionsClass: {
     type: String,
-    description: "Add additional classes to default block-options",
+    description: 'Add additional classes to default block-options'
   },
   contentClass: {
     type: String,
-    description: "Add additional classes to default block-content",
+    description: 'Add additional classes to default block-content'
   },
   footerClass: {
     type: String,
-    description: "Add additional classes to default block footer",
+    description: 'Add additional classes to default block footer'
   },
   headerBg: {
     type: Boolean,
     default: true,
-    description: "Add the default header background",
+    description: 'Add the default header background'
   },
   headerRtl: {
     type: Boolean,
     default: false,
-    description: "Reverse the order of elements in header",
+    description: 'Reverse the order of elements in header'
   },
   contentFull: {
     type: Boolean,
     default: false,
-    description: "Add full padding to the bottom of the default block-content",
+    description: 'Add full padding to the bottom of the default block-content'
   },
   ribbon: {
     type: [Boolean, String],
     default: false,
     description:
-      "Enable the ribbon or enable it and also specify its content by setting a string value.",
+      'Enable the ribbon or enable it and also specify its content by setting a string value.'
   },
   ribbonLeft: {
     type: Boolean,
     default: false,
-    description: "Position ribbon to the left",
+    description: 'Position ribbon to the left'
   },
   ribbonBottom: {
     type: Boolean,
     default: false,
-    description: "Position ribbon to the bottom",
+    description: 'Position ribbon to the bottom'
   },
   ribbonBookmark: {
     type: Boolean,
     default: false,
-    description: "Set the bookmark type to your ribbon",
+    description: 'Set the bookmark type to your ribbon'
   },
   ribbonModern: {
     type: Boolean,
     default: false,
-    description: "Set the modern type to your ribbon",
+    description: 'Set the modern type to your ribbon'
   },
   ribbonVariant: {
     type: String,
-    default: "primary",
-    description:
-      "Set a different ribbon variant (primary, info, warning, danger, success, glass)",
+    default: 'primary',
+    description: 'Set a different ribbon variant (primary, info, warning, danger, success, glass)'
   },
   modeLoading: {
     type: Boolean,
     default: false,
-    description: "Loading block mode",
+    description: 'Loading block mode'
   },
   modeFullscreen: {
     type: Boolean,
     default: false,
-    description: "Fullscreen block mode",
+    description: 'Fullscreen block mode'
   },
   modePinned: {
     type: Boolean,
     default: false,
-    description: "Pinned block mode",
+    description: 'Pinned block mode'
   },
   modeContentHide: {
     type: Boolean,
     default: false,
-    description: "Hide block’s content",
+    description: 'Hide block’s content'
   },
   modeHide: {
     type: Boolean,
     default: false,
-    description: "Hide block itself",
+    description: 'Hide block itself'
   },
   btnOptionFullscreen: {
     type: Boolean,
     defaul: false,
-    description: "Enable the fullscreen mode button",
+    description: 'Enable the fullscreen mode button'
   },
   btnOptionPinned: {
     type: Boolean,
     defaul: false,
-    description: "Enable the pinned mode button",
+    description: 'Enable the pinned mode button'
   },
   btnOptionContent: {
     type: Boolean,
     defaul: false,
-    description: "Enable the content toggle button",
+    description: 'Enable the content toggle button'
   },
   btnOptionClose: {
     type: Boolean,
     defaul: false,
-    description: "Enable the close mode button",
-  },
-});
+    description: 'Enable the close mode button'
+  }
+})
 
 // Reactive state
 const state = reactive({
@@ -196,135 +195,135 @@ const state = reactive({
   optionContentHide: props.modeContentHide,
 
   // If block itself is hidden
-  optionHide: props.modeHide,
-});
+  optionHide: props.modeHide
+})
 
 // Set CSS classes accordingly
 const classContainer = computed(() => {
   return {
-    "block-bordered": props.bordered,
-    "block-rounded": props.rounded,
-    "block-themed": props.themed,
-    "block-transparent": props.transparent,
-    "block-fx-shadow": props.fxShadow,
-    "block-fx-pop": props.fxPop,
-    "block-fx-rotate-right": props.fxRotateRight,
-    "block-fx-rotate-left": props.fxRotateLeft,
-    "block-link-shadow": props.linkShadow,
-    "block-link-pop": props.linkPop,
-    "block-link-rotate": props.linkRotate,
-    "block-mode-loading": state.optionLoading,
-    "block-mode-fullscreen": state.optionFullscreen,
-    "block-mode-pinned": state.optionPinned,
-    "block-mode-hidden": state.optionContentHide,
-    "d-none": state.optionHide,
-  };
-});
+    'block-bordered': props.bordered,
+    'block-rounded': props.rounded,
+    'block-themed': props.themed,
+    'block-transparent': props.transparent,
+    'block-fx-shadow': props.fxShadow,
+    'block-fx-pop': props.fxPop,
+    'block-fx-rotate-right': props.fxRotateRight,
+    'block-fx-rotate-left': props.fxRotateLeft,
+    'block-link-shadow': props.linkShadow,
+    'block-link-pop': props.linkPop,
+    'block-link-rotate': props.linkRotate,
+    'block-mode-loading': state.optionLoading,
+    'block-mode-fullscreen': state.optionFullscreen,
+    'block-mode-pinned': state.optionPinned,
+    'block-mode-hidden': state.optionContentHide,
+    'd-none': state.optionHide
+  }
+})
 
 // Set CSS classes for block header
 const classContainerHeader = computed(() => {
   return {
-    "block-header-default": props.headerBg,
-    "block-header-rtl": props.headerRtl,
-    [props.headerClass]: props.headerClass,
-  };
-});
+    'block-header-default': props.headerBg,
+    'block-header-rtl': props.headerRtl,
+    [props.headerClass]: props.headerClass
+  }
+})
 
 // Set CSS classes for block header options
 const classContainerOptions = computed(() => {
   return {
-    [props.optionsClass]: props.optionsClass,
-  };
-});
+    [props.optionsClass]: props.optionsClass
+  }
+})
 
 // Set CSS classes for block footer options
 const classContainerFooter = computed(() => {
   return {
-    [props.footerClass]: props.footerClass,
-  };
-});
+    [props.footerClass]: props.footerClass
+  }
+})
 
 // Set CSS classes for block content
 const classContainerContent = computed(() => {
   return {
-    "block-content-full": props.contentFull,
+    'block-content-full': props.contentFull,
     ribbon: props.ribbon,
-    "ribbon-left": props.ribbon && props.ribbonLeft,
-    "ribbon-bottom": props.ribbon && props.ribbonBottom,
-    "ribbon-bookmark": props.ribbon && props.ribbonBookmark,
-    "ribbon-modern": props.ribbon && props.ribbonModern,
+    'ribbon-left': props.ribbon && props.ribbonLeft,
+    'ribbon-bottom': props.ribbon && props.ribbonBottom,
+    'ribbon-bookmark': props.ribbon && props.ribbonBookmark,
+    'ribbon-modern': props.ribbon && props.ribbonModern,
     [`ribbon-${props.ribbonVariant}`]: props.ribbon && props.ribbonVariant,
-    [props.contentClass]: props.contentClass,
-  };
-});
+    [props.contentClass]: props.contentClass
+  }
+})
 
 // Block functions to call on demand
 function fullscreenToggle() {
-  state.optionPinned = false;
-  state.optionFullscreen = !state.optionFullscreen;
+  state.optionPinned = false
+  state.optionFullscreen = !state.optionFullscreen
 }
 
 function fullscreenOn() {
-  state.optionPinned = false;
-  state.optionFullscreen = true;
+  state.optionPinned = false
+  state.optionFullscreen = true
 }
 
 function fullscreenOff() {
-  state.optionPinned = false;
-  state.optionFullscreen = false;
+  state.optionPinned = false
+  state.optionFullscreen = false
 }
 
 function pinnedToggle() {
-  state.optionFullscreen = false;
-  state.optionPinned = !state.optionPinned;
+  state.optionFullscreen = false
+  state.optionPinned = !state.optionPinned
 }
 
 function pinnedOn() {
-  state.optionFullscreen = false;
-  state.optionPinned = true;
+  state.optionFullscreen = false
+  state.optionPinned = true
 }
 
 function pinnedOff() {
-  state.optionFullscreen = false;
-  state.optionPinned = false;
+  state.optionFullscreen = false
+  state.optionPinned = false
 }
 
 function contentToggle() {
-  state.optionContentHide = !state.optionContentHide;
+  state.optionContentHide = !state.optionContentHide
 }
 
 function contentShow() {
-  state.optionContentHide = false;
+  state.optionContentHide = false
 }
 
 function contentHide() {
-  state.optionContentHide = true;
+  state.optionContentHide = true
 }
 
 function statusToggle() {
-  state.optionLoading = !state.optionLoading;
+  state.optionLoading = !state.optionLoading
 }
 
 function statusLoading(mode, timeout) {
-  state.optionLoading = true;
+  state.optionLoading = true
 
-  if (mode === "demo") {
+  if (mode === 'demo') {
     setTimeout(() => {
-      state.optionLoading = false;
-    }, timeout);
+      state.optionLoading = false
+    }, timeout)
   }
 }
 
 function statusNormal() {
-  state.optionLoading = false;
+  state.optionLoading = false
 }
 
 function open() {
-  state.optionHide = false;
+  state.optionHide = false
 }
 
 function close() {
-  state.optionHide = true;
+  state.optionHide = true
 }
 
 defineExpose({
@@ -341,17 +340,12 @@ defineExpose({
   statusLoading,
   statusNormal,
   open,
-  close,
-});
+  close
+})
 </script>
 
 <template>
-  <component
-    :is="tag"
-    :href="tag === 'a' ? '#' : null"
-    :class="classContainer"
-    class="block"
-  >
+  <component :is="tag" :href="tag === 'a' ? '#' : null" :class="classContainer" class="block">
     <!-- Block Header -->
     <div
       class="block-header"
@@ -390,7 +384,7 @@ defineExpose({
             <i
               :class="{
                 'si si-size-fullscreen': !state.optionFullscreen,
-                'si si-size-actual': state.optionFullscreen,
+                'si si-size-actual': state.optionFullscreen
               }"
             ></i>
           </button>
@@ -411,16 +405,11 @@ defineExpose({
             <i
               :class="{
                 'si si-arrow-up': !state.optionContentHide,
-                'si si-arrow-down': state.optionContentHide,
+                'si si-arrow-down': state.optionContentHide
               }"
             ></i>
           </button>
-          <button
-            type="button"
-            class="btn-block-option"
-            @click="close"
-            v-if="btnOptionClose"
-          >
+          <button type="button" class="btn-block-option" @click="close" v-if="btnOptionClose">
             <i class="si si-close"></i>
           </button>
         </div>
@@ -430,11 +419,7 @@ defineExpose({
     <!-- END Block Header -->
 
     <!-- Default Block Content -->
-    <div
-      v-if="!$slots.content"
-      class="block-content"
-      :class="classContainerContent"
-    >
+    <div v-if="!$slots.content" class="block-content" :class="classContainerContent">
       <div v-if="props.ribbon" class="ribbon-box">
         <slot name="ribbon">{{ ribbon }}</slot>
       </div>

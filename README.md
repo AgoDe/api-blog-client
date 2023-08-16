@@ -1,5 +1,20 @@
 # oneui-vue-edition
 
+## Install node and npm
+
+``` bash
+wget https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh
+sudo wget https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh
+bash install.sh
+source ~/.bashrc
+nvm -v
+nvm list-remote
+nvm install v18.16.0
+node -v
+sudo apt install gcc g++ make
+
+---
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
